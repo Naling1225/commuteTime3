@@ -59,9 +59,14 @@ public class MainInputFrame extends JFrame {
     	return inputWagePanel.getWorkingDays();
     }
 
+    public void setDuration(String duration){
+        inputLocationPanel.setDuration(duration);
+    }
     public void addSubmitButtonListener(ActionListener listener) {
         searchButtonPanel.getSearchButton().addActionListener(listener);
     }
-    
+    public void addRequiredTimeButtonListener(ActionListener listener) {
+        inputLocationPanel.getDurationButton().addActionListener(listener);
+    }
     
 }

@@ -7,9 +7,24 @@ import java.awt.*;
 
 public class ExchangeResultPanel extends JPanel {
     private static final long serialVersionUID = 1L;
-    JLabel startLabel = null;
-    JLabel endLabel = null;
-    JLabel priceLabel = null;
+    String departure, destination;
+    int commuteCost, fare;
+    JLabel startLabel, endLabel, priceLabel, totalLabel;
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public void setCommuteCost(int commuteCost) {
+        this.commuteCost = commuteCost;
+    }
+
+    public void setFare(int fare) {
+        this.fare = fare;
+    }
 	public ExchangeResultPanel() {
         setBorder(new EmptyBorder(15, 15, 15, 15));
         setBackground(Color.WHITE);
@@ -31,7 +46,7 @@ public class ExchangeResultPanel extends JPanel {
         infoPanel.setBackground(Color.WHITE);
         bottomPanel.add(infoPanel, BorderLayout.NORTH); // 정보 패널을 상단에 배치
 
-        startLabel = new JLabel("수원역");
+        startLabel = new JLabel(departure);
         startLabel.setFont(new Font("NotoSans", Font.BOLD, 18));
         startLabel.setBorder(new EmptyBorder(20, 0, 40, 20));
         infoPanel.add(startLabel); // 시작지점 레이블 추가
@@ -43,7 +58,7 @@ public class ExchangeResultPanel extends JPanel {
         imageLabel.setBorder(new EmptyBorder(20, 0, 40, 0));
         infoPanel.add(imageLabel); // 이미지 레이블 추가
 
-        endLabel = new JLabel("서울역");
+        endLabel = new JLabel(destination);
         endLabel.setFont(new Font("NotoSans", Font.BOLD, 18));
         endLabel.setBorder(new EmptyBorder(20, 20, 40, 0));
         infoPanel.add(endLabel); // 도착지점 레이블 추가
@@ -52,7 +67,7 @@ public class ExchangeResultPanel extends JPanel {
         pricePanel.setBackground(Color.WHITE);
         bottomPanel.add(pricePanel, BorderLayout.CENTER); // 가격 패널을 중앙에 배치
 
-        priceLabel = new JLabel("<html><div style='text-align: center;'>시간을 돈으로 환산하면<br><font color='#000000'><b>42,000원</b></font> 입니다.</div></html>");
+        priceLabel = new JLabel("<html><div style='text-align: center;'>시간을 돈으로 환산하면<br><font color='#000000'><b>"+commuteCost+"원</b></font> 입니다.</div></html>");
         priceLabel.setHorizontalAlignment(SwingConstants.CENTER);
         priceLabel.setBorder(new EmptyBorder(0, 0, 20, 0));
         priceLabel.setFont(new Font("NotoSans", Font.PLAIN, 30));
@@ -90,7 +105,7 @@ public class ExchangeResultPanel extends JPanel {
 
         gbc.insets = new Insets(10, 0, 0, 0); // 위쪽 간격 조절
 
-        JLabel totalLabel = new JLabel("총 852,020원");
+        totalLabel = new JLabel("총"+commuteCost*20+"원");
         totalLabel.setFont(new Font("NotoSans", Font.BOLD, 35));
         totalLabel.setBorder(new EmptyBorder(0, 0, 20, 0));
         totalLabel.setForeground(Color.decode("#333333"));
@@ -109,7 +124,10 @@ public class ExchangeResultPanel extends JPanel {
 	public void setTime(String time) {
 		
 	}
-	public void setCost(int cost) {
-		priceLabel.setText("<html><div style='text-align: center;'>시간을 돈으로 환산하면<br><font color='#000000'><b>"+cost+"원</b></font> 입니다.</div></html>");
-	}
+    public void showResult(){
+        startLabel.setText(departure);
+        endLabel.setText(destination);
+        priceLabel.setText("<html><div style='text-align: center;'>시간을 돈으로 환산하면<br><font color='#000000'><b>"+commuteCost+"원</b></font> 입니다.</div></html>");
+        totalLabel.setText("총"+(commuteCost+fare)*20+"원");
+    }
 }

@@ -35,18 +35,27 @@ public class MainResultFrame extends JFrame {
         
         setResizable(false);
     }
-    
-    public void setPosition(String start, String end) {
-    	exchangeResultPanel.setStartPosition(start);
-    	exchangeResultPanel.setEndPosition(end);
+    public void createResultFrame(){
+        exchangeResultPanel.showResult();
     }
-    
+    public void setDeparture(String departure){
+        exchangeResultPanel.setDeparture(departure);
+    }
+    public void setDestination(String destination){
+        exchangeResultPanel.setDestination(destination);
+    }
+    public void setCommuteCost(int cost){
+        exchangeResultPanel.setCommuteCost(cost);
+    }
+
     public void setTime(String time) {
     	exchangeResultPanel.setTime(time);
     }
     
-    public void setCost(int cost) {
+    /*public void setCost(int cost) {
     	exchangeResultPanel.setCost(cost);
+    }*/
+    public void setFare(int fare){
+        exchangeResultPanel.setFare(fare);
     }
-
 }

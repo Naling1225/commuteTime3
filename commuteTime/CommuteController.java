@@ -25,11 +25,30 @@ public class CommuteController {
         this.model = model;
         this.inputView = inputView;
         this.resultView = resultView;
-        
+
+        // 소요시간 정보를 얻어오기 위한 리스너를 등록한다.
+        inputView.addRequiredTimeButtonListener(new DurationButtonListener());
+
         // View에서 발생한 이벤트 처리를 위한 리스너를 등록한다.
         inputView.addSubmitButtonListener(new SubmitButtonListener());
     }
 
+    class DurationButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("소요시간을 가져오기 위한 이벤트 리스너가 트리거됨");
+            String departureLocation = inputView.getDepartureLocation();
+            String destinationLocation = inputView.getDestinationLocation();
+            model.setDepartureLocation(departureLocation);
+            model.setDestinationLocation(destinationLocation);
+            try {
+                model.calculateCommuteTime();
+                inputView.setDuration(model.duration);
+            } catch (IOException | InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
     int n = 0;
 
     class SubmitButtonListener implements ActionListener {
@@ -62,15 +81,20 @@ public class CommuteController {
             try {
                 String commuteTime = model.calculateCommuteTime();
                 int cost = model.calculateCommuteCost();
+                String departure = model.getDepartureName();
+                String destination = model.getDestinationName();
+                int fare = model.getFare();
 
-                resultView.setPosition(departureLocation, destinationLocation);
-                resultView.setCost(cost);
+                resultView.setDeparture(departure);
+                resultView.setDestination(destination);
+                //resultView.setCost(cost);
+                resultView.setCommuteCost(cost);
+                resultView.setFare(fare);
+                resultView.createResultFrame();
                 inputView.setVisible(false);
                 resultView.setVisible(true);
                 waitThread.setEnd();
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            } catch (InterruptedException e1) {
+            } catch (IOException | InterruptedException e1) {
                 e1.printStackTrace();
             }
         }

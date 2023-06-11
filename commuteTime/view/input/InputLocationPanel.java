@@ -1,24 +1,16 @@
 package commuteTime.view.input;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicButtonUI;
 
 import commuteTime.TransitAPI;
+import commuteTime.view.result.ResetButtonPanel;
 
 public class InputLocationPanel extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -28,6 +20,8 @@ public class InputLocationPanel extends JPanel {
     private final JTextField departureField;
     private final JTextField destinationField;
     private final JTextField departureTimeField;
+    private final JButton durationButton;
+    JLabel durationLabel;
     String duration ="";
 
     public String getDeparture() {
@@ -41,8 +35,14 @@ public class InputLocationPanel extends JPanel {
     public String getDepartureTime() {
         return departureTimeField.getText();
     }
+    public JButton getDurationButton() {
+        return durationButton;
+    }
+
+
     public void setDuration(String duration) {
         this.duration = duration;
+        durationLabel.setText(duration);
     }
 
     public InputLocationPanel() {
@@ -115,7 +115,34 @@ public class InputLocationPanel extends JPanel {
 
         // Add spacing between departureTimeLabel and departureTimeField
         bottomPanel.add(Box.createVerticalStrut(30), BorderLayout.CENTER);
-        bottomPanel.add(Box.createVerticalStrut(30), BorderLayout.CENTER);
+        //bottomPanel.add(Box.createVerticalStrut(30), BorderLayout.CENTER);
+
+        // Create a panel to hold the departure time field and duration button
+        JPanel departureTimeFieldPanel = new JPanel(new BorderLayout());
+        departureTimeFieldPanel.setBackground(Color.WHITE);
+        departureTimeFieldPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        departureTimeFieldPanel.add(departureTimeField, BorderLayout.CENTER);
+
+        durationButton = new JButton("소요시간 확인");
+        durationButton.setFont(new Font("NotoSans", Font.PLAIN, 14));
+        durationButton.setFocusPainted(false);
+        durationButton.setBackground(Color.decode("#EDEDED"));
+        durationButton.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
+        durationButton.setUI(new RoundedButtonUI(50));
+
+        departureTimeFieldPanel.add(durationButton, BorderLayout.SOUTH);
+
+        bottomPanel.add(departureTimeFieldPanel, BorderLayout.CENTER);
+
+        durationLabel = new JLabel();
+        durationLabel.setText(duration);
+        durationLabel.setFont(new Font("NotoSans", Font.BOLD, 18));
+        durationLabel.setBorder(new EmptyBorder(15, 0, 0, 0));
+        durationLabel.setForeground(new Color(0x5F5F5F));
+        durationLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        bottomPanel.add(durationLabel, BorderLayout.SOUTH);
+
+        add(bottomPanel, BorderLayout.SOUTH);
 
         LocalDateTime currentTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 (E) HH:mm");
@@ -128,16 +155,51 @@ public class InputLocationPanel extends JPanel {
                 BorderFactory.createEmptyBorder(20, 0, 20, 0), // Add top and bottom margin of 20 pixels
                 departureTimeField.getBorder()
         ));
-        departureLabel.setBorder(null);
-        bottomPanel.add(departureTimeField, BorderLayout.CENTER);
+//        departureLabel.setBorder(null);
+//        bottomPanel.add(departureTimeField, BorderLayout.CENTER);
 
-        JLabel durationLabel = new JLabel();
-        durationLabel.setText(duration);
-        durationLabel.setFont(new Font("NotoSans", Font.BOLD, 18));
-        durationLabel.setForeground(new Color(0x5F5F5F));
-        durationLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        bottomPanel.add(durationLabel, BorderLayout.SOUTH);
 
-        add(bottomPanel, BorderLayout.SOUTH);
+    }
+    private static class RoundedButtonUI extends BasicButtonUI {
+        private int borderRadius;
+
+        public RoundedButtonUI(int borderRadius) {
+            this.borderRadius = borderRadius;
+        }
+
+        @Override
+        protected void installDefaults(AbstractButton button) {
+            super.installDefaults(button);
+            button.setOpaque(false);
+        }
+
+        @Override
+        public void paint(Graphics g, JComponent c) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            AbstractButton button = (AbstractButton) c;
+            ButtonModel model = button.getModel();
+            boolean isPressed = model.isPressed();
+            boolean isRollover = model.isRollover();
+
+            int width = button.getWidth();
+            int height = button.getHeight();
+
+            RoundRectangle2D roundedRectangle = new RoundRectangle2D.Double(0, 0, width - 1, height - 1, borderRadius, borderRadius);
+
+            if (isPressed) {
+                g2.setColor(button.getBackground().darker());
+            } else if (isRollover) {
+                g2.setColor(button.getBackground().brighter());
+            } else {
+                g2.setColor(button.getBackground());
+            }
+
+            g2.fill(roundedRectangle);
+
+            super.paint(g2, button);
+            g2.dispose();
+        }
     }
 }
