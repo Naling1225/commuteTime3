@@ -56,7 +56,7 @@ public class MainInputFrame extends JFrame {
     }
 
 	public String getWorkingTime() {
-    	return inputWagePanel.getCommutingDays();
+    	return inputWagePanel.getWorkingDays();
     }
 
     public void addSubmitButtonListener(ActionListener listener) {

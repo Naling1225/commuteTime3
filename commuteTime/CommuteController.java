@@ -41,8 +41,13 @@ public class CommuteController {
             // 사용자 입력 값을 Model에 전달한다.
             double hourlyWage = inputView.getWage();
             String wageType = inputView.getWageType();
-            String time = inputView.getComputeDay();
             String day = inputView.getComputeDay();
+            String time = inputView.getWorkingTime();
+
+            time = time.replaceAll("시간", "");
+            day = day.replaceAll("일", "");
+            int workingTime = Integer.parseInt(time);
+            int commuteDay = Integer.parseInt(day);
             String departureLocation = inputView.getDepartureLocation();
             String destinationLocation = inputView.getDestinationLocation();
 
@@ -50,8 +55,8 @@ public class CommuteController {
             model.setWageType(wageType);
             model.setDepartureLocation(departureLocation);
             model.setDestinationLocation(destinationLocation);
-            model.setWorkingTime(Integer.parseInt(time.replaceAll("시간", "")));
-            model.setCommuteDay(Integer.parseInt(day.replaceAll("일", "")));
+            model.setWorkingTime(workingTime);
+            model.setCommuteDay(commuteDay);
 
             // Model에서 계산된 결과를 View에 전달한다.
             try {

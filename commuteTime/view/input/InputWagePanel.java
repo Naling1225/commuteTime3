@@ -178,10 +178,6 @@ public class InputWagePanel extends JPanel {
         return commutingDaysField.getText();
     }
 
-	public String getWorkingTime() {
-        return workingDaysField.getText();
-    }
-
     public String getWageType() {
     	return wageType;
     }
