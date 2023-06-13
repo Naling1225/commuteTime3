@@ -15,14 +15,14 @@ import commuteTime.view.result.ResetButtonPanel;
 public class InputLocationPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
-	TransitAPI transitAPI;
+    TransitAPI transitAPI;
 
     private final JTextField departureField;
     private final JTextField destinationField;
     private final JTextField departureTimeField;
     private final JButton durationButton;
     JLabel durationLabel;
-    String duration ="";
+    String duration = "";
 
     public String getDeparture() {
         return departureField.getText();
@@ -35,10 +35,10 @@ public class InputLocationPanel extends JPanel {
     public String getDepartureTime() {
         return departureTimeField.getText();
     }
+
     public JButton getDurationButton() {
         return durationButton;
     }
-
 
     public void setDuration(String duration) {
         this.duration = duration;
@@ -64,7 +64,7 @@ public class InputLocationPanel extends JPanel {
         departureLabel.setForeground(new Color(0x5F5F5F));
         topPanel.add(departureLabel);
 
-        ImageIcon icon = new ImageIcon("images/exchangeIcon.png");
+        ImageIcon icon = new ImageIcon("../../images/exchangeIcon.png");
         Image scaledImage = icon.getImage().getScaledInstance(75, 35, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         JLabel iconLabel = new JLabel(scaledIcon);
@@ -88,7 +88,7 @@ public class InputLocationPanel extends JPanel {
         destinationField.setText("청파로47길 100");
         destinationField.setHorizontalAlignment(JTextField.CENTER);
 
-        //transitAPI = new TransitAPI(this.getDeparture(),this.getDestination());
+        // transitAPI = new TransitAPI(this.getDeparture(),this.getDestination());
 
         departureField.setBorder(null);
         destinationField.setBorder(null);
@@ -109,13 +109,12 @@ public class InputLocationPanel extends JPanel {
         departureTimeLabel.setHorizontalAlignment(SwingConstants.CENTER);
         departureTimeLabel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(0xCCCCCC)),
-                BorderFactory.createEmptyBorder(7, 0, 7, 0)
-        ));
+                BorderFactory.createEmptyBorder(7, 0, 7, 0)));
         bottomPanel.add(departureTimeLabel, BorderLayout.NORTH);
 
         // Add spacing between departureTimeLabel and departureTimeField
         bottomPanel.add(Box.createVerticalStrut(30), BorderLayout.CENTER);
-        //bottomPanel.add(Box.createVerticalStrut(30), BorderLayout.CENTER);
+        // bottomPanel.add(Box.createVerticalStrut(30), BorderLayout.CENTER);
 
         // Create a panel to hold the departure time field and duration button
         JPanel departureTimeFieldPanel = new JPanel(new BorderLayout());
@@ -153,13 +152,12 @@ public class InputLocationPanel extends JPanel {
         departureTimeField.setHorizontalAlignment(JTextField.CENTER);
         departureTimeField.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createEmptyBorder(20, 0, 20, 0), // Add top and bottom margin of 20 pixels
-                departureTimeField.getBorder()
-        ));
-//        departureLabel.setBorder(null);
-//        bottomPanel.add(departureTimeField, BorderLayout.CENTER);
-
+                departureTimeField.getBorder()));
+        // departureLabel.setBorder(null);
+        // bottomPanel.add(departureTimeField, BorderLayout.CENTER);
 
     }
+
     private static class RoundedButtonUI extends BasicButtonUI {
         private int borderRadius;
 
@@ -186,7 +184,8 @@ public class InputLocationPanel extends JPanel {
             int width = button.getWidth();
             int height = button.getHeight();
 
-            RoundRectangle2D roundedRectangle = new RoundRectangle2D.Double(0, 0, width - 1, height - 1, borderRadius, borderRadius);
+            RoundRectangle2D roundedRectangle = new RoundRectangle2D.Double(0, 0, width - 1, height - 1, borderRadius,
+                    borderRadius);
 
             if (isPressed) {
                 g2.setColor(button.getBackground().darker());

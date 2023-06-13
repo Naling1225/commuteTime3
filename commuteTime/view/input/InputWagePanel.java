@@ -33,7 +33,7 @@ public class InputWagePanel extends JPanel {
     private ButtonGroup wageTypeGroup;
     private ImageIcon selectedIcon;
     private ImageIcon unselectedIcon;
-    
+
     private String wageType = "시급";
 
     public InputWagePanel() {
@@ -50,11 +50,11 @@ public class InputWagePanel extends JPanel {
         JRadioButton monthlyWageRadioButton = new JRadioButton("월급");
         JRadioButton annualSalaryRadioButton = new JRadioButton("연봉");
 
-        selectedIcon = new ImageIcon("images/selected.png");
+        selectedIcon = new ImageIcon("../../images/selected.png");
         Image selectedImage = selectedIcon.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         selectedIcon = new ImageIcon(selectedImage);
 
-        unselectedIcon = new ImageIcon("images/unselected.png");
+        unselectedIcon = new ImageIcon("../../images/unselected.png");
         Image unselectedImage = unselectedIcon.getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH);
         unselectedIcon = new ImageIcon(unselectedImage);
 
@@ -179,16 +179,16 @@ public class InputWagePanel extends JPanel {
     }
 
     public String getWageType() {
-    	return wageType;
+        return wageType;
     }
-	
+
     private class RadioButtonItemListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Update the icons based on the selected radio button
             JRadioButton selectedRadioButton = (JRadioButton) e.getSource();
             if (selectedRadioButton.isSelected()) {
-            	wageType = selectedRadioButton.getText();
+                wageType = selectedRadioButton.getText();
                 selectedRadioButton.setIcon(selectedIcon);
                 selectedRadioButton.setBackground(Color.WHITE);
                 selectedRadioButton.setForeground(Color.decode("#000000"));
