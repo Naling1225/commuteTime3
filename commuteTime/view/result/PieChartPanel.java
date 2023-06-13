@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class PieChartPanel extends JPanel {
 
-    private JLabel textLabel;
+    public static JLabel textLabel;
     private int duration;
     private int percentage;
     private static double THIRTY_MIN = 40.3;
