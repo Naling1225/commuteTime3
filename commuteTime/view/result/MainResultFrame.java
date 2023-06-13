@@ -72,4 +72,8 @@ public class MainResultFrame extends JFrame {
     public void setDuration(int angle) {
         pieChartPanel.setDuration(angle);
     }
+
+    public void calcPercentage() {
+        pieChartPanel.calcPercentage();
+    }
 }

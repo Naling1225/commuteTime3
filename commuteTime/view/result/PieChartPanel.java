@@ -58,7 +58,7 @@ public class PieChartPanel extends JPanel {
 
         // Draw specific part of the pie chart
         int startAngle = 90; // 시작 각도 (시작점 기준 시계 방향으로 증가)
-     
+
         g.setColor(Color.decode("#777777"));
         g.fillArc(centerX - radius, centerY - radius, radius * 2, radius * 2, startAngle,  (int) (-1 * calcPercentage() * 3.6));
     }
