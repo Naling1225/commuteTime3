@@ -11,10 +11,7 @@ public class CommuteModel {
 	String wageType;
 	TransitAPI transitAPI;
 	String departureName, destinationName;
-	int fare;
-	int nDay;
-	int nTime;
-
+	int fare, nDay, nTime;
 
 	public void setHourlyWage(double hourlyWage) {
 		this.hourlyWage = hourlyWage;
@@ -35,6 +32,7 @@ public class CommuteModel {
 	public void setCommuteDay(int nDay) {
 		this.nDay = nDay;
 	}
+	
 	public void setWorkingTime(int nTime) {
 		this.nTime = nTime;
 	}

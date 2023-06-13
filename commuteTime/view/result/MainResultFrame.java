@@ -58,4 +58,8 @@ public class MainResultFrame extends JFrame {
     public void setFare(int fare){
         exchangeResultPanel.setFare(fare);
     }
+
+    public void setCommuteDay(int commuteDay){
+        exchangeResultPanel.setCommuteDay(commuteDay);
+    }
 }

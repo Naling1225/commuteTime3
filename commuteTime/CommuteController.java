@@ -90,6 +90,7 @@ public class CommuteController {
                 //resultView.setCost(cost);
                 resultView.setCommuteCost(cost);
                 resultView.setFare(fare);
+                resultView.setCommuteDay(commuteDay);
                 resultView.createResultFrame();
                 inputView.setVisible(false);
                 resultView.setVisible(true);

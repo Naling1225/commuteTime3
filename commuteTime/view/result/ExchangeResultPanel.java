@@ -8,7 +8,7 @@ import java.awt.*;
 public class ExchangeResultPanel extends JPanel {
     private static final long serialVersionUID = 1L;
     String departure, destination;
-    int commuteCost, fare;
+    int commuteCost, fare, nDay;
     JLabel startLabel, endLabel, priceLabel, totalLabel;
     public void setDeparture(String departure) {
         this.departure = departure;
@@ -21,7 +21,9 @@ public class ExchangeResultPanel extends JPanel {
     public void setCommuteCost(int commuteCost) {
         this.commuteCost = commuteCost;
     }
-
+    public void setCommuteDay(int nDay) {
+		this.nDay = nDay;
+	}
     public void setFare(int fare) {
         this.fare = fare;
     }
@@ -105,7 +107,7 @@ public class ExchangeResultPanel extends JPanel {
 
         gbc.insets = new Insets(10, 0, 0, 0); // 위쪽 간격 조절
 
-        totalLabel = new JLabel("총"+commuteCost*20+"원");
+        totalLabel = new JLabel("총"+commuteCost*nDay+"원");
         totalLabel.setFont(new Font("NotoSans", Font.BOLD, 35));
         totalLabel.setBorder(new EmptyBorder(0, 0, 20, 0));
         totalLabel.setForeground(Color.decode("#333333"));
@@ -128,6 +130,6 @@ public class ExchangeResultPanel extends JPanel {
         startLabel.setText(departure);
         endLabel.setText(destination);
         priceLabel.setText("<html><div style='text-align: center;'>시간을 돈으로 환산하면<br><font color='#000000'><b>"+commuteCost+"원</b></font> 입니다.</div></html>");
-        totalLabel.setText("총"+(commuteCost+fare)*20+"원");
+        totalLabel.setText("총"+(commuteCost+fare)*nDay+"원");
     }
 }
