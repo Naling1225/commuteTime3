@@ -91,7 +91,7 @@ public class ExchangeResultPanel extends JPanel {
         gbc.insets = new Insets(5, 0, 5, 0); // 위 아래 간격 조절
 
         JLabel monthlyExpenseLabel = new JLabel(
-                "한 달 기준, 출퇴근시간의 가치와");
+                "한 달 기준, 출퇴근 시간의 가치와");
         monthlyExpenseLabel.setFont(new Font("NotoSans", Font.PLAIN, 20));
         monthlyExpenseLabel.setBorder(new EmptyBorder(10, 0, 0, 0));
         monthlyExpenseLabel.setForeground(Color.decode("#5F5F5F"));

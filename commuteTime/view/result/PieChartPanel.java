@@ -16,7 +16,7 @@ public class PieChartPanel extends JPanel {
     private static double MORE_THAN_TWO_HOUR = 0.2;
 
     public void setDuration(int duration) {
-        this.duration = duration ;
+        this.duration = duration;
     }
 
     public PieChartPanel() {
@@ -60,12 +60,14 @@ public class PieChartPanel extends JPanel {
         int startAngle = 90; // 시작 각도 (시작점 기준 시계 방향으로 증가)
 
         g.setColor(Color.decode("#777777"));
-        g.fillArc(centerX - radius, centerY - radius, radius * 2, radius * 2, startAngle,  (int) (-1 * calcPercentage() * 3.6));
+        g.fillArc(centerX - radius, centerY - radius, radius * 2, radius * 2, startAngle,
+                (int) (-1 * calcPercentage() * 3.6));
     }
 
     private void createTextLabel() {
         System.out.println("percentage:: " + percentage);
-        textLabel = new JLabel("<html><div style='text-align: left; font-size: 12px;'>대한민국 "+ percentage + " % 입니다.</div></html>");
+        textLabel = new JLabel(
+                "<html><div style='text-align: left; font-size: 12px;'>대한민국 상위" + percentage + " % 입니다.</div></html>");
         textLabel.setForeground(new Color(0x5F5F5F));
         textLabel.setFont(new Font("NotoSans", Font.BOLD, 20));
         textLabel.setHorizontalAlignment(SwingConstants.CENTER); // 텍스트 정렬을 왼쪽으로 변경
@@ -118,7 +120,8 @@ public class PieChartPanel extends JPanel {
                 double infinity = Double.POSITIVE_INFINITY;
                 detailedPercentage = (oneWayDuration - 120.0) / infinity * 100.0;
             }
-            percentage = THIRTY_MIN + ONE_HOUR + ONE_HOUR_AND_THIRTY_MIN + TWO_HOUR + MORE_THAN_TWO_HOUR * detailedPercentage / 100;
+            percentage = THIRTY_MIN + ONE_HOUR + ONE_HOUR_AND_THIRTY_MIN + TWO_HOUR
+                    + MORE_THAN_TWO_HOUR * detailedPercentage / 100;
         }
         this.percentage = (int) Math.round(percentage);
         return (int) Math.round(percentage);
