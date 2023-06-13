@@ -27,14 +27,17 @@ public class MainResultFrame extends JFrame {
         exchangeResultPanel = new ExchangeResultPanel();
         contentPane.add(exchangeResultPanel, BorderLayout.NORTH);
 
+        JPanel textPanel = new JPanel(new GridLayout(1, 1));
+        textPanel.setBackground(Color.WHITE);
+        textPanel.setBorder(new EmptyBorder(0, 20, 0, 0));
+        contentPane.add(textPanel, BorderLayout.WEST);
+
         pieChartPanel = new PieChartPanel();
         contentPane.add(pieChartPanel, BorderLayout.CENTER);
 
-        JPanel textPanel = new JPanel(new GridLayout(1, 1));
-        contentPane.add(textPanel, BorderLayout.SOUTH);
 
-        // resetButtonPanel = new ResetButtonPanel(this, parent);
-        // contentPane.add(resetButtonPanel, BorderLayout.SOUTH);
+        resetButtonPanel = new ResetButtonPanel(this, parent);
+        contentPane.add(resetButtonPanel, BorderLayout.SOUTH);
         
         setResizable(false);
     }

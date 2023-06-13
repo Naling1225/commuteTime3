@@ -77,7 +77,7 @@ public class PieChartPanel extends JPanel {
         textLabel.setFont(new Font("NotoSans", Font.BOLD, 20));
         textLabel.setHorizontalAlignment(SwingConstants.CENTER); // 텍스트 정렬을 왼쪽으로 변경
         textLabel.setBorder(new EmptyBorder(0, 0, 0, 0)); // 왼쪽 여백 조정
-        JPanel textPanel = (JPanel) (this.getParent()).getComponent(2);
+        JPanel textPanel = (JPanel) (this.getParent()).getComponent(1);
 
         textPanel.removeAll();
         textPanel.add(textLabel);
