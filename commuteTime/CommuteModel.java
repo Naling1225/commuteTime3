@@ -70,10 +70,10 @@ public class CommuteModel {
 	}
 
 	public int calculateCommuteCost() {
-//		1. 시급을 선택했을 경우 : wage / 60 * commuteTime = commuteCost
-//		2. 일급을 선택했을 경우 : wage / 60 / workingDays * commuteTime = commuteCost
-//		3. 월급을 선택했을 경우 : wage / 60 / workingDays / commutingDays * commuteTime = commuteCost
-//		4. 월급을 선택했을 경우 : wage / 60 / workingDays / commutingDays / 12 * commuteTime = commuteCost
+//		1. 시급을 선택했을 경우 : 임금 / 60 * 출퇴근시간 = commuteCost
+//		2. 일급을 선택했을 경우 : 임금 / 60 / 하루근무시간 * 출퇴근시간 = commuteCost
+//		3. 월급을 선택했을 경우 : 임금 / 60 / 하루근무시간 / 한달근로일 * 출퇴근시간 = commuteCost
+//		4. 월급을 선택했을 경우 : 임금 / 60 / 하루근무시간 / 한달근로일 / 12 * 출퇴근시간 = commuteCost
 		int commuteCost = 0;
 		if("시급".equals(wageType)) {
 			commuteCost = (int)(hourlyWage * commuteTime);

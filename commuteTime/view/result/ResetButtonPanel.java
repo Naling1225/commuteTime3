@@ -26,7 +26,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
 public class ResetButtonPanel extends JPanel implements ActionListener{
     private static final long serialVersionUID = 1L;
 	JButton searchAgainButton;
-    JButton resetButton;
+    JButton endButton;
     JFrame parent;
     JFrame grandParent;
     public ResetButtonPanel(JFrame parent, JFrame grandParent) {
@@ -45,14 +45,14 @@ public class ResetButtonPanel extends JPanel implements ActionListener{
         
         searchAgainButton.addActionListener(this);
 
-        resetButton = new JButton("초기화면");
-        resetButton.setFont(new Font("NotoSans", Font.BOLD, 18));
-        resetButton.setPreferredSize(new Dimension(130, 50));
-        resetButton.setBackground(Color.decode("#EDEDED"));
-        resetButton.setFocusPainted(false);
-        resetButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        resetButton.setUI(new RoundedButtonUI());
-        resetButton.addActionListener(this);
+        endButton = new JButton("종료");
+        endButton.setFont(new Font("NotoSans", Font.BOLD, 18));
+        endButton.setPreferredSize(new Dimension(130, 50));
+        endButton.setBackground(Color.decode("#EDEDED"));
+        endButton.setFocusPainted(false);
+        endButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        endButton.setUI(new RoundedButtonUI());
+        endButton.addActionListener(this);
         
         JPanel buttonContainer = new JPanel(new GridBagLayout());
         buttonContainer.setBackground(Color.WHITE);
@@ -62,7 +62,7 @@ public class ResetButtonPanel extends JPanel implements ActionListener{
         gbc.insets = new Insets(0, 15, 0, 15);
         buttonContainer.add(searchAgainButton, gbc);
         gbc.gridx = 1;
-        buttonContainer.add(resetButton, gbc);
+        buttonContainer.add(endButton, gbc);
 
         add(buttonContainer);
     }
@@ -71,8 +71,8 @@ public class ResetButtonPanel extends JPanel implements ActionListener{
         return searchAgainButton;
     }
 
-    public JButton getResetButton() {
-        return resetButton;
+    public JButton getEndButton() {
+        return endButton;
     }
     
     @Override
@@ -81,9 +81,8 @@ public class ResetButtonPanel extends JPanel implements ActionListener{
     		parent.setVisible(false);
     		grandParent.setVisible(true);
     	}
-    	else if(e.getSource()==resetButton) {
-    		parent.setVisible(false);
-    		grandParent.setVisible(true);
+    	else if(e.getSource()==endButton) {
+    		System.exit(0);
     	}
     }
 

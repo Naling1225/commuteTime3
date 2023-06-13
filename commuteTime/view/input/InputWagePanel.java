@@ -124,7 +124,7 @@ public class InputWagePanel extends JPanel {
         workingDaysLabel.setBorder(new EmptyBorder(10, 0, 20, 0));
         workingDaysField = new JTextField(6);
         workingDaysField.setFont(new Font("NotoSans", Font.BOLD, 25));
-        workingDaysField.setText("180시간");
+        workingDaysField.setText("8시간");
         workingDaysField.setBorder(null);
         workingDaysField.setHorizontalAlignment(JTextField.CENTER);
         workingDaysPanel.add(workingDaysLabel, BorderLayout.NORTH);
