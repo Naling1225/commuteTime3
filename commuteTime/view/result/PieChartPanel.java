@@ -39,13 +39,6 @@ public class PieChartPanel extends JPanel {
         JPanel textPanel = new JPanel(new GridLayout(1, 1));
         textPanel.setOpaque(false); // 배경 투명하게 설정
 
-        JLabel textLabel = new JLabel("<html><div style='text-align: left; font-size: 12px;'>대한민국<br>상위 0.1%</div></html>");
-        textLabel.setForeground(new Color(0x5F5F5F));
-        textLabel.setFont(new Font("NotoSans", Font.PLAIN, 20));
-        textLabel.setHorizontalAlignment(SwingConstants.LEFT); // 텍스트 정렬을 왼쪽으로 변경
-        textLabel.setBorder(new EmptyBorder(0, 40, 0, 0)); // 왼쪽 여백 조정
-        textPanel.add(textLabel);
-
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setLayout(new BorderLayout());
         layeredPane.add(chartPanel, BorderLayout.CENTER); // 차트를 배경으로 추가
@@ -65,9 +58,9 @@ public class PieChartPanel extends JPanel {
 
         // Draw specific part of the pie chart
         int startAngle = 90; // 시작 각도 (시작점 기준 시계 방향으로 증가)
-        int arcAngle = (int) (360 * 0.01); // 호의 각도
+     
         g.setColor(Color.decode("#777777"));
-        g.fillArc(centerX - radius, centerY - radius, radius * 2, radius * 2, startAngle, arcAngle);
+        g.fillArc(centerX - radius, centerY - radius, radius * 2, radius * 2, startAngle,  (int) (-1 * calcPercentage() * 3.6));
     }
 
     private void createTextLabel() {
