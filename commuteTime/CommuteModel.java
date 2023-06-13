@@ -84,4 +84,23 @@ public class CommuteModel {
 		}
 		return commuteCost;
 	}
+
+		public int convertTextToMinutes(String text) {
+		int hours = 0;
+		int minutes = 0;
+
+		String[] parts = text.split(" ");
+		for (String part : parts) {
+			if (part.contains("시간")) {
+				String[] timeParts = part.split("시간");
+				hours = Integer.parseInt(timeParts[0]);
+			} else if (part.contains("분")) {
+				String[] timeParts = part.split("분");
+				minutes = Integer.parseInt(timeParts[0]);
+			}
+		}
+
+		int totalMinutes = hours * 60 + minutes;
+		return totalMinutes;
+	}
 }

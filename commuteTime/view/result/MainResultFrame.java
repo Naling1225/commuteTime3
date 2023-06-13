@@ -30,8 +30,11 @@ public class MainResultFrame extends JFrame {
         pieChartPanel = new PieChartPanel();
         contentPane.add(pieChartPanel, BorderLayout.CENTER);
 
-        resetButtonPanel = new ResetButtonPanel(this, parent);
-        contentPane.add(resetButtonPanel, BorderLayout.SOUTH);
+        JPanel textPanel = new JPanel(new GridLayout(1, 1));
+        contentPane.add(textPanel, BorderLayout.SOUTH);
+
+        // resetButtonPanel = new ResetButtonPanel(this, parent);
+        // contentPane.add(resetButtonPanel, BorderLayout.SOUTH);
         
         setResizable(false);
     }
@@ -61,5 +64,9 @@ public class MainResultFrame extends JFrame {
 
     public void setCommuteDay(int commuteDay){
         exchangeResultPanel.setCommuteDay(commuteDay);
+    }
+
+    public void setDuration(int angle) {
+        pieChartPanel.setDuration(angle);
     }
 }

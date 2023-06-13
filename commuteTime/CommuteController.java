@@ -45,7 +45,8 @@ public class CommuteController {
             model.setDepartureLocation(departureLocation);
             model.setDestinationLocation(destinationLocation);
             try {
-                model.calculateCommuteTime();
+                String textTime = model.calculateCommuteTime();
+                resultView.setDuration(model.convertTextToMinutes(textTime));
                 inputView.setDuration(model.duration);
             } catch (IOException | InterruptedException ex) {
                 throw new RuntimeException(ex);
