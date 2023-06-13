@@ -103,7 +103,7 @@ public class InputWagePanel extends JPanel {
         JPanel wagePanel = new JPanel(new BorderLayout());
         wagePanel.setBackground(Color.WHITE);
         wagePanel.add(wageField, BorderLayout.CENTER);
-        JLabel wageUnitLabel = new JLabel("한 달 기준");
+        JLabel wageUnitLabel = new JLabel("근로 스케줄");
         wageUnitLabel.setFont(new Font("NotoSans", Font.PLAIN, 17));
         wageUnitLabel.setForeground(new Color(0x5F5F5F));
         wageUnitLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -117,7 +117,7 @@ public class InputWagePanel extends JPanel {
 
         JPanel workingDaysPanel = new JPanel(new BorderLayout());
         workingDaysPanel.setBackground(Color.WHITE);
-        JLabel workingDaysLabel = new JLabel("근로시간");
+        JLabel workingDaysLabel = new JLabel("일일 근로시간");
         workingDaysLabel.setFont(new Font("NotoSans", Font.PLAIN, 17));
         workingDaysLabel.setForeground(new Color(0x5F5F5F));
         workingDaysLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -132,7 +132,7 @@ public class InputWagePanel extends JPanel {
 
         JPanel commutingDaysPanel = new JPanel(new BorderLayout());
         commutingDaysPanel.setBackground(Color.WHITE);
-        JLabel commutingDaysLabel = new JLabel("출근일수");
+        JLabel commutingDaysLabel = new JLabel("한달 출근일수");
         commutingDaysLabel.setFont(new Font("NotoSans", Font.PLAIN, 17));
         commutingDaysLabel.setForeground(new Color(0x5F5F5F));
         commutingDaysLabel.setHorizontalAlignment(SwingConstants.CENTER);
