@@ -78,6 +78,7 @@ public class ResetButtonPanel extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
     	if(e.getSource()==searchAgainButton) {
+            PieChartPanel.textLabel = null;
     		parent.setVisible(false);
     		grandParent.setVisible(true);
     	}
